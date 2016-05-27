@@ -19,18 +19,18 @@ class QixinSpider(scrapy.Spider):
         proxy_len = len(proxy_items_http)
         n = 0
         for item in sheller_info_items:
-            url = "http://www.qixin.com/search?key=%s&type=enterprise&method=ename" % item['shop_name']
+            url = "http://www.qichacha.com/search?key=%s&index=0" % item['shop_name']
             req = scrapy.Request(
                 url,
                 # cookies=self.cookie,
                 callback=self.parse,
                 # dont_filter=True,
-                meta={
+                # meta={
                     # 'item': item,
                     # 'date': meta_data['date'],
                     # 'weibo_id': meta_data['weibo_id']
                     # 'cookiejar': 'cookiejar',
-                }
+                # }
             )
             if proxy_len > 0:
                 if n >= proxy_len:
@@ -44,14 +44,14 @@ class QixinSpider(scrapy.Spider):
             break
 
     def parse(self, response):
-        search_list = response.xpath('//div[@class="search-list-bg"]/div[@class="search-ent-row clearfix"]')
+        search_list = response.xpath('//div[@class="col-md-9"]/section/ul/a')
         # print search_list
         print "headers: ", response.headers
         print "meta: ", response.meta
 
         for sel in search_list:
             url = sel.xpath(
-                './div[@class="search-ent-left"]/div[@class="search-ent-left-content"]/a/@href').extract_first()
+                './@href').extract_first()
             url = response.urljoin(url)
             print "url: ", url
             c = response.headers['Set-Cookie']
@@ -68,7 +68,6 @@ class QixinSpider(scrapy.Spider):
                 meta={
                     # 'cookiejar': response.meta['cookiejar'],
                     'proxy': response.meta['proxy'],
-
                 }
 
             )
