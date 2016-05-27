@@ -11,7 +11,7 @@ from ..proxy.proxy_helper import ProxyHelper
 
 
 class QixinSpider(scrapy.Spider):
-    name = "qixin_spider"
+    name = "qichacha_spider"
 
     def start_requests(self):
         sheller_info_items = ShellerInfoItemsDB.get_sheller_info_items()
