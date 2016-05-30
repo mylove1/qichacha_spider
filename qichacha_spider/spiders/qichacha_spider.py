@@ -14,6 +14,7 @@ class QichachaSpider(scrapy.Spider):
         sheller_info_items = ShellerInfoItemsDB.get_sheller_info_items()
 
         for item in sheller_info_items:
+            print item['shop_name']
             url = "http://www.qichacha.com/search?key=%s&index=0" % item['shop_name']
             request = scrapy.Request(
                 url,

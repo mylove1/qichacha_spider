@@ -27,7 +27,7 @@ class ShellerInfoItemsDB(object):
 
     @staticmethod
     def get_sheller_info_items():
-        return jd_db.sheller_info_items.find()
+        return jd_db.sheller_info_items.find().batch_size(50)
 
 
 class CompanyInfoItemsDB(object):
