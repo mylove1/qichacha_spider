@@ -14,6 +14,7 @@ class CompanyInfoItem(scrapy.Item):
     email = scrapy.Field()  # 邮箱
 
     company_name = scrapy.Field()  # 公司名称
+    unified_social_credit_code = scrapy.Field()  # 统一社会信用代码
     registration_number = scrapy.Field()  # 注册号
     organization_registration_code = scrapy.Field()  # 组织机构代码
     business_status = scrapy.Field()  # 经营状态
@@ -28,6 +29,6 @@ class CompanyInfoItem(scrapy.Item):
     business_scope = scrapy.Field()  # 经营范围
 
     # url = scrapy.Field()  # 官网
-    # unified_social_credit_code = scrapy.Field()  # 统一社会信用代码
+
 
     pass
