@@ -51,32 +51,33 @@ class QichachaSpider(scrapy.Spider):
         li_list = response.xpath('//ul[@class="company-base"]/li')
         for li_sel in li_list:
             label = li_sel.xpath('./label/text()').extract_first()
+            print label
             if u'统一社会信用代码' in label:
-                companyInfoItem['unified_social_credit_code'] = response.xpath('./text()').extract_first()
+                companyInfoItem['unified_social_credit_code'] = li_sel.xpath('./text()').extract_first()
             if u'注册号' in label:
-                companyInfoItem['registration_number'] = response.xpath('./text()').extract_first()
+                companyInfoItem['registration_number'] = li_sel.xpath('./text()').extract_first()
             elif u'组织机构代码' in label:
-                companyInfoItem['organization_registration_code'] = response.xpath('./text()').extract_first()
+                companyInfoItem['organization_registration_code'] = li_sel.xpath('./text()').extract_first()
             elif u'经营状态' in label:
-                companyInfoItem['business_status'] = response.xpath('./text()').extract_first()
+                companyInfoItem['business_status'] = li_sel.xpath('./text()').extract_first()
             elif u'公司类型' in label:
-                companyInfoItem['business_type'] = response.xpath('./text()').extract_first()
+                companyInfoItem['business_type'] = li_sel.xpath('./text()').extract_first()
             elif u'成立日期' in label:
-                companyInfoItem['register_date'] = response.xpath('./text()').extract_first()
+                companyInfoItem['register_date'] = li_sel.xpath('./text()').extract_first()
             elif u'法定代表' in label:
-                companyInfoItem['legal_representative'] = response.xpath('./a/text()').extract_first()
+                companyInfoItem['legal_representative'] = li_sel.xpath('./a/text()').extract_first()
             elif u'注册资本' in label:
-                companyInfoItem['registered_capital'] = response.xpath('./text()').extract_first()
+                companyInfoItem['registered_capital'] = li_sel.xpath('./text()').extract_first()
             elif u'营业期限' in label:
-                companyInfoItem['operating_period'] = response.xpath('./text()').extract_first()
+                companyInfoItem['operating_period'] = li_sel.xpath('./text()').extract_first()
             elif u'登记机关' in label:
-                companyInfoItem['registration_authority'] = response.xpath('./text()').extract_first()
+                companyInfoItem['registration_authority'] = li_sel.xpath('./text()').extract_first()
             elif u'发照日期' in label:
-                companyInfoItem['date_of_issue'] = response.xpath('./text()').extract_first()
+                companyInfoItem['date_of_issue'] = li_sel.xpath('./text()').extract_first()
             elif u'企业地址' in label:
-                companyInfoItem['business_address'] = response.xpath('./text()').extract_first()
+                companyInfoItem['business_address'] = li_sel.xpath('./text()').extract_first()
             elif u'经营范围' in label:
-                companyInfoItem['business_scope'] = response.xpath('./text()').extract_first()
+                companyInfoItem['business_scope'] = li_sel.xpath('./text()').extract_first()
             else:
                 print "unknown li label: ", label
         print companyInfoItem
