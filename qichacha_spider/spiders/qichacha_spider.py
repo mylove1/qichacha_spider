@@ -77,7 +77,7 @@ class QichachaSpider(scrapy.Spider):
             elif u'企业地址' in label:
                 companyInfoItem['business_address'] = li_sel.xpath('./text()')[1].extract()
             elif u'英文名' in label:
-                companyInfoItem['english_name'] = li_sel.xpath('./text()').extract_first()
+                companyInfoItem['english_name'] = li_sel.xpath('./text()')[1].extract()
             elif u'经营范围' in label:
                 companyInfoItem['business_scope'] = li_sel.xpath('./text()')[1].extract()
             else:
