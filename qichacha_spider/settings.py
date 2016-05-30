@@ -71,7 +71,7 @@ ROBOTSTXT_OBEY = False
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-# COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 # COOKIES_DEBUG = True
 
 # Disable Telnet Console (enabled by default)
@@ -98,7 +98,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     # 'qichacha_spider.middlewares.MyCustomDownloaderMiddleware': 543,
-    'qichacha_spider.middlewares.ProxyMiddleware': 760,
+    # 'qichacha_spider.middlewares.ProxyMiddleware': 760,
     # 'qichacha_spider.middlewares.RandomUserAgentMiddleware': 410,
 }
 
