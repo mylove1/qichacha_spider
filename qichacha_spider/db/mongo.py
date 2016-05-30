@@ -18,7 +18,7 @@ class ProxyItemsQichachaDB(object):
     @staticmethod
     def get_proxy_items():
         # print "get_proxy_items"
-        return proxy_db.proxy_items_qichacha.find({}, {'_id': 0})
+        return proxy_db.proxy_items_qichacha.find({}, {'_id': 0}).batch_size(50)
 
 
 class ShellerInfoItemsDB(object):
