@@ -9,7 +9,7 @@ class ProxyHelper(object):
         pass
 
     @staticmethod
-    def get_proxy_items_qichacha_type_http():
+    def get_proxy_items_type_http():
         try:
             proxy_items = ProxyItemsQichachaDB.get_proxy_items()
             print "proxy_items_http.count:=", proxy_items.count()
@@ -21,7 +21,7 @@ class ProxyHelper(object):
             return []
 
     @staticmethod
-    def get_proxy_items_qichacha_type_https():
+    def get_proxy_items_type_https():
         try:
             proxy_items = ProxyItemsQichachaDB.get_proxy_items()
             print "proxy_items_https.count:=", proxy_items.count()

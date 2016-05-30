@@ -24,7 +24,7 @@ class ProxyMiddleware(object):
     http_n = 0
     https_n = 0
 
-    proxy_items_http = ProxyHelper.get_proxy_items_qixin_type_http()
+    proxy_items_http = ProxyHelper.get_proxy_items_type_http()
 
     # proxy_items_https = ProxyHelper.get_proxy_items_jd_type_https()
 
@@ -51,7 +51,7 @@ class ProxyMiddleware(object):
             if proxy_len > 0:
                 n = ProxyMiddleware.http_n
                 if n >= len(ProxyMiddleware.proxy_items_http):
-                    ProxyMiddleware.proxy_items_http = ProxyHelper.get_proxy_items_qixin_type_http()
+                    ProxyMiddleware.proxy_items_http = ProxyHelper.get_proxy_items_type_http()
                     n = 0
 
                 request.meta['proxy'] = "http://%s:%d" % (
