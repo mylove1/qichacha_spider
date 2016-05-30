@@ -150,6 +150,7 @@ MONGO_URI = "localhost:27017"
 MONGO_PROXY_DB = "proxy"
 MONGO_JD_DB = "jd"
 MONGO_QICHACHA_DB = "qichacha"
+MONGO_BJDA_DB = "bjda"
 
 # LOG
 LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')

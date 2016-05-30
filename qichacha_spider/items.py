@@ -9,6 +9,10 @@ import scrapy
 
 
 class CompanyInfoItem(scrapy.Item):
+    item_category = scrapy.Field()  # 分类
+    item_category_num = scrapy.Field()  # 分类编号
+    item_from = scrapy.Field()  # 来源 jd, bjda..
+
     province = scrapy.Field()  # 省份
     phone = scrapy.Field()  # 电话
     email = scrapy.Field()  # 邮箱

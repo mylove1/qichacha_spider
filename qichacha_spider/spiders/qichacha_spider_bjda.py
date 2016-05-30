@@ -3,23 +3,25 @@ __author__ = 'zhaojm'
 
 import scrapy
 
-from ..db.mongo import ShellerInfoItemsDB
+from ..db.mongo import BjdaItemsDB
 from ..items import CompanyInfoItem
 
 
 class QichachaSpider(scrapy.Spider):
-    name = "qichacha_spider"
+    name = "qichacha_spider_bjda"
 
     def start_requests(self):
-        sheller_info_items = ShellerInfoItemsDB.get_sheller_info_items()
+        company_info_items = BjdaItemsDB.get_company_info_items()
 
-        for item in sheller_info_items:
-            print "shop_name: ", item['shop_name']
-            url = "http://www.qichacha.com/search?key=%s&index=0" % item['shop_name']
+        for item in company_info_items:
+            print "company_name: ", item['company_name']
+            url = "http://www.qichacha.com/search?key=%s&index=0" % item['company_name']
             request = scrapy.Request(
                 url,
                 callback=self.parse
             )
+            request.meta['item_category'] = item['item_category']
+            request.meta['item_category_num'] = item['item_category_num']
             yield request
             # break
 
@@ -27,20 +29,27 @@ class QichachaSpider(scrapy.Spider):
         search_list = response.xpath('//ul[@class="list-group list-group-lg no-bg auto"]/a')
         for sel in search_list:
             companyInfoItem = CompanyInfoItem()
-            url = sel.xpath('./@href').extract_first()
+
+            companyInfoItem['item_category'] = response.meta['item_category']
+            companyInfoItem['item_category_num'] = response.meta['item_category_num']
+            companyInfoItem['item_from'] = u'bjda'
+
             companyInfoItem['province'] = sel.xpath(
                 './span[@class="clear"]/span[@class="btn btn-link pull-right"]/text()').extract_first()
             companyInfoItem['phone'] = sel.xpath('./span[@class="clear"]/small[2]/span[1]/text()').extract_first()
             companyInfoItem['email'] = sel.xpath('./span[@class="clear"]/small[2]/span[2]/text()').extract_first()
+
+            url = sel.xpath('./@href').extract_first()
             url = response.urljoin(url)
             print "url: ", url
+
             request = scrapy.Request(
                 url,
                 callback=self.parse_company
             )
             request.meta['item'] = companyInfoItem
             yield request
-            # break
+            break  # 只要第一个,有分类的
 
     def parse_company(self, response):
         # print response.body

@@ -3,12 +3,13 @@ __author__ = 'zhaojm'
 
 import pymongo
 
-from qichacha_spider.settings import MONGO_URI, MONGO_PROXY_DB, MONGO_JD_DB, MONGO_QICHACHA_DB
+from qichacha_spider.settings import MONGO_URI, MONGO_PROXY_DB, MONGO_JD_DB, MONGO_QICHACHA_DB, MONGO_BJDA_DB
 
 mongo_client = pymongo.MongoClient(MONGO_URI)
 proxy_db = mongo_client[MONGO_PROXY_DB]
 jd_db = mongo_client[MONGO_JD_DB]
 qichacha_db = mongo_client[MONGO_QICHACHA_DB]
+bjda_db = mongo_client[MONGO_BJDA_DB]
 
 
 class ProxyItemsQichachaDB(object):
@@ -39,3 +40,25 @@ class CompanyInfoItemsDB(object):
         qichacha_db.company_info_items.update(
             {'company_name': item['company_name']},
             {'$set': item}, True, True)
+
+
+class BjdaItemsDB(object):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def upsert_company_info_item(item):
+        bjda_db.company_info_items.update({
+            'company_name': item['company_name']
+        }, {"$set": item}, True, True)
+
+    @staticmethod
+    def get_company_info_items():
+        return bjda_db.company_info_items.find().batch_size(50)
+        # return bjda_db.company_info_items.find().batch_size(50).skip(skip).limit(limit)
+
+    @staticmethod
+    def upsert_company_info_item_clean(item):
+        bjda_db.company_info_items_clean.update({
+            'company_name': item['company_name']
+        }, {"$set": item}, True, True)
