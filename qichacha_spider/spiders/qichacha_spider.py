@@ -21,7 +21,7 @@ class QichachaSpider(scrapy.Spider):
                 callback=self.parse
             )
             yield request
-            break
+            # break
 
     def parse(self, response):
         search_list = response.xpath('//ul[@class="list-group list-group-lg no-bg auto"]/a')
