@@ -71,7 +71,7 @@ ROBOTSTXT_OBEY = True
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 # COOKIES_DEBUG = True
 
 # Disable Telnet Console (enabled by default)
@@ -146,11 +146,11 @@ MONGO_JD_DB = "jd"
 MONGO_QICHACHA_DB = "qichacha"
 
 # LOG
-# LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
+LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
 # CRITICAL、 ERROR、WARNING、INFO、DEBUG
 LOG_LEVEL = 'DEBUG'
 # 所有标准输出重定向到log
-# LOG_STDOUT = True
+LOG_STDOUT = True
 
 # 重试次数
 RETRY_TIMES = 20
