@@ -7,6 +7,19 @@
 
 from scrapy.exceptions import DropItem
 from qichacha_spider.db.mongo import CompanyInfoItemsDB
+from utils import require_value_from_dict
+
+
+class StripParamsPipeline(object):
+    def process_item(self, item, spider):
+        i = CompanyInfoItemsDB()
+        for key in ['province', 'phone', 'email',
+                    'company_name', 'registration_number', 'organization_registration_code',
+                    'business_status', 'business_type', 'register_date', 'legal_representative',
+                    'registered_capital', 'operating_period', 'registration_authority',
+                    'date_of_issue', 'business_address', 'business_scope']:
+            i[key] = require_value_from_dict(item, key)
+        return i
 
 
 class ValidParamsPipeline(object):

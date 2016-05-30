@@ -109,7 +109,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'qichacha_spider.pipelines.SomePipeline': 300,
+    'qichacha_spider.pipelines.StripParamsPipeline': 99,
     'qichacha_spider.pipelines.ValidParamsPipeline': 100,
     'qichacha_spider.pipelines.DuplicatesPipeline': 200,
     # 'qichacha_spider.pipelines.CheckProxyPipeline': 300,
@@ -141,7 +141,7 @@ HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 MONGO_URI = "localhost:27017"
 MONGO_PROXY_DB = "proxy"
 MONGO_JD_DB = "jd"
-MONGO_COMPANY_DB = "qichacha"
+MONGO_QICHACHA_DB = "qichacha"
 
 # LOG
 # LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')

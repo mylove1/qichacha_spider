@@ -3,7 +3,7 @@ __author__ = 'zhaojm'
 
 import base64
 import random
-from qixin_spider.proxy.proxy_helper import ProxyHelper
+from qichacha_spider.proxy.proxy_helper import ProxyHelper
 
 
 class RandomUserAgentMiddleware(object):
@@ -21,8 +21,8 @@ class RandomUserAgentMiddleware(object):
 
 
 class ProxyMiddleware(object):
-    http_n = 24
-    https_n = 24
+    http_n = 0
+    https_n = 0
 
     proxy_items_http = ProxyHelper.get_proxy_items_qixin_type_http()
 
