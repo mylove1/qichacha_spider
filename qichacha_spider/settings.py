@@ -12,7 +12,7 @@
 import sys
 reload(sys)
 sys.setdefaultencoding("utf8")
-
+print "sys default encoding: ", sys.getdefaultencoding()
 
 
 import datetime
