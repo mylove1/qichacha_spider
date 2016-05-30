@@ -24,7 +24,6 @@ class QichachaSpider(scrapy.Spider):
 
     def parse(self, response):
         search_list = response.xpath('//ul[@class="list-group list-group-lg no-bg auto"]/a')
-
         for sel in search_list:
             companyInfoItem = CompanyInfoItem()
             url = sel.xpath('./@href').extract_first()
@@ -51,7 +50,7 @@ class QichachaSpider(scrapy.Spider):
         li_list = response.xpath('//ul[@class="company-base"]/li')
         for li_sel in li_list:
             label = li_sel.xpath('./label/text()').extract_first()
-            print label.encode('utf8')
+            # print label.encode('utf8')
             if u'统一社会信用代码' in label:
                 companyInfoItem['unified_social_credit_code'] = li_sel.xpath('./text()').extract_first()
             elif u'注册号' in label:
