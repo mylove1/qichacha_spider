@@ -9,6 +9,13 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
+import sys
+
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+
+
 import datetime
 
 BOT_NAME = 'qichacha_spider'
