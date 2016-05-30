@@ -8,11 +8,12 @@
 from scrapy.exceptions import DropItem
 from qichacha_spider.db.mongo import CompanyInfoItemsDB
 from utils import require_value_from_dict
+from items import CompanyInfoItem
 
 
 class StripParamsPipeline(object):
     def process_item(self, item, spider):
-        i = CompanyInfoItemsDB()
+        i = CompanyInfoItem()
         for key in ['province', 'phone', 'email',
                     'company_name', 'registration_number', 'organization_registration_code',
                     'business_status', 'business_type', 'register_date', 'legal_representative',
