@@ -84,7 +84,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.6',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
-    'Host': 'www.qixin.com',
+    'Host': 'www.qichacha.com',
     'Upgrade-Insecure-Requests': 1,
 }
 
