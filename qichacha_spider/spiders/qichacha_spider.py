@@ -54,7 +54,7 @@ class QichachaSpider(scrapy.Spider):
             print label.encode('utf8')
             if u'统一社会信用代码' in label:
                 companyInfoItem['unified_social_credit_code'] = li_sel.xpath('./text()').extract_first()
-            if u'注册号' in label:
+            elif u'注册号' in label:
                 companyInfoItem['registration_number'] = li_sel.xpath('./text()').extract_first()
             elif u'组织机构代码' in label:
                 companyInfoItem['organization_registration_code'] = li_sel.xpath('./text()').extract_first()
@@ -75,9 +75,11 @@ class QichachaSpider(scrapy.Spider):
             elif u'发照日期' in label:
                 companyInfoItem['date_of_issue'] = li_sel.xpath('./text()').extract_first()
             elif u'企业地址' in label:
-                companyInfoItem['business_address'] = li_sel.xpath('./text()').extract_first()
+                companyInfoItem['business_address'] = li_sel.xpath('./text()')[1].extract_first()
+            elif u'英文名' in label:
+                companyInfoItem['english_name'] = li_sel.xpath('./text()')[1].extract_first()
             elif u'经营范围' in label:
-                companyInfoItem['business_scope'] = li_sel.xpath('./text()').extract_first()
+                companyInfoItem['business_scope'] = li_sel.xpath('./text()')[1].extract_first()
             else:
                 print "unknown li label: ", label.encode('utf8')
         print companyInfoItem

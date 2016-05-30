@@ -26,6 +26,7 @@ class CompanyInfoItem(scrapy.Item):
     registration_authority = scrapy.Field()  # 登记机关
     date_of_issue = scrapy.Field()  # 发照日期
     business_address = scrapy.Field()  # 企业地址
+    english_name = scrapy.Field()
     business_scope = scrapy.Field()  # 经营范围
 
     # url = scrapy.Field()  # 官网

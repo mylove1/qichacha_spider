@@ -18,7 +18,8 @@ class StripParamsPipeline(object):
                     'company_name', 'registration_number', 'organization_registration_code',
                     'business_status', 'business_type', 'register_date', 'legal_representative',
                     'registered_capital', 'operating_period', 'registration_authority',
-                    'date_of_issue', 'business_address', 'business_scope', 'unified_social_credit_code']:
+                    'date_of_issue', 'business_address', 'business_scope', 'unified_social_credit_code',
+                    'english_name']:
             i[key] = require_value_from_dict(item, key)
         return i
 
