@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 cd /home/apps/qichacha_spider
-sh crawl_bjda.sh &
-sh crawl_jd.sh &
+sh crontab/crawl_bjda.sh &
+sh crontab/crawl_jd.sh &
