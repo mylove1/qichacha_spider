@@ -3,14 +3,15 @@ __author__ = 'zhaojm'
 
 import pymongo
 
-from qichacha_spider.settings import MONGO_URI, MONGO_PROXY_DB, MONGO_JD_DB, MONGO_QICHACHA_DB, MONGO_BJDA_DB
+from qichacha_spider.settings import MONGO_URI, MONGO_PROXY_DB, MONGO_JD_DB, MONGO_QICHACHA_DB, MONGO_BJDA_DB, \
+    MONGO_NEEQ_DB
 
 mongo_client = pymongo.MongoClient(MONGO_URI)
 proxy_db = mongo_client[MONGO_PROXY_DB]
 jd_db = mongo_client[MONGO_JD_DB]
 qichacha_db = mongo_client[MONGO_QICHACHA_DB]
 bjda_db = mongo_client[MONGO_BJDA_DB]
-
+neeq_db = mongo_client[MONGO_NEEQ_DB]
 
 class ProxyItemsQichachaDB(object):
     def __init__(self):
@@ -62,3 +63,13 @@ class BjdaItemsDB(object):
         bjda_db.company_info_items_clean.update({
             'company_name': item['company_name']
         }, {"$set": item}, True, True)
+
+
+class NeeqItemsDB(object):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def insert_item(item):
+        # print item
+        neeq_db.neeq_items.insert(item)

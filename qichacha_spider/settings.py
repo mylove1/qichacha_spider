@@ -151,6 +151,7 @@ MONGO_PROXY_DB = "proxy"
 MONGO_JD_DB = "jd"
 MONGO_QICHACHA_DB = "qichacha"
 MONGO_BJDA_DB = "bjda"
+MONGO_NEEQ_DB = "neeq"
 
 # LOG
 # LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
