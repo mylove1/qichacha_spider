@@ -20,8 +20,8 @@ class QichachaSpider(scrapy.Spider):
         for i, element in enumerate(txt):
             if i % 2 == 0:
                 search_key = txt[i:2]
-                print "search_key: ", search_key
-                search_key = u"乐游乐动"
+                # print "search_key: ", search_key
+                # search_key = u"乐游乐动"
                 print "search_key: ", search_key
                 url = "http://www.qichacha.com/search?key=" + urllib.quote(search_key.encode('utf-8')) + "&index=0"
                 # url = "http://www.qichacha.com/search_index?key="+ urllib.quote(search_key.encode('utf-8')) + "&index=0&statusCode=&registCapiBegin=&registCapiEnd=&sortField=&isSortAsc=&province=&startDateBegin=&startDateEnd=&cityCode=&industryCode=&subIndustryCode=&ajaxflag=true&p=1"
