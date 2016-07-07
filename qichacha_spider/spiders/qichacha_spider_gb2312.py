@@ -29,14 +29,7 @@ class QichachaSpider(scrapy.Spider):
                 print url
                 request = scrapy.Request(
                     url,
-                    callback=self.parse,
-                    # cookies={
-                    #     'gr_user_id': '96e129b6-7844-4379-a573-f47a98c6f123',
-                    #     'PHPSESSID': '9bt7e8s8vfr6qr49dusr5btd91',
-                    #     'gr_session_id_9c1eb7420511f8b2': 'ec090291-95e4-49bc-949b-dabf7f843212',
-                    #     'CNZZDATA1254842228': '7237497-1467271234-http%253A%252F%252Fwww.qichacha.com%252F%7C1467600649',
-                    #     'SERVERID': '0359c5bc66f888586d5a134d958bb1be|1467606234|1467569210'
-                    # }
+                    callback=self.parse
                 )
                 # # request.meta['item_category'] = item['category']
                 # # request.meta['item_category_num'] = item['category'][0:1]
@@ -51,7 +44,7 @@ class QichachaSpider(scrapy.Spider):
 
             # companyInfoItem['item_category'] = response.meta['item_category']
             # companyInfoItem['item_category_num'] = response.meta['item_category_num']
-            companyInfoItem['item_from'] = u'gb2312'
+            companyInfoItem['item_from_gb2312'] = u'gb2312'
             companyInfoItem['item_update_time'] = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
             companyInfoItem['province'] = sel.xpath(

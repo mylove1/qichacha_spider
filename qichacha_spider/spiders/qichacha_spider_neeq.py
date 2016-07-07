@@ -4,7 +4,7 @@ __author__ = 'zhaojm'
 import scrapy
 import time
 
-from ..db.mongo import ShellerInfoItemsDB
+from ..db.mongo import NeeqItemsDB
 from ..items import CompanyInfoItem
 
 
@@ -12,17 +12,17 @@ class QichachaSpider(scrapy.Spider):
     name = "qichacha_spider_neeq"
 
     def start_requests(self):
-        sheller_info_items = ShellerInfoItemsDB.get_sheller_info_items()
+        neeq_items = NeeqItemsDB.get_neeq_items()
 
-        for item in sheller_info_items:
-            print "shop_name: ", item['shop_name']
-            url = "http://www.qichacha.com/search?key=%s&index=0" % item['shop_name']
+        for item in neeq_items:
+            print "company_name: ", item['hqzqjc']
+            url = "http://www.qichacha.com/search?key=%s&index=0" % item['hqzqjc']
             request = scrapy.Request(
                 url,
                 callback=self.parse
             )
-            # request.meta['item_category'] = item['category']
-            # request.meta['item_category_num'] = item['category'][0:1]
+            # request.meta['item_category'] = item['xxfcbj']
+            request.meta['item_category_num'] = item['xxfcbj']
             yield request
             # break
 
@@ -32,7 +32,7 @@ class QichachaSpider(scrapy.Spider):
             companyInfoItem = CompanyInfoItem()
 
             # companyInfoItem['item_category'] = response.meta['item_category']
-            # companyInfoItem['item_category_num'] = response.meta['item_category_num']
+            companyInfoItem['item_category_num'] = response.meta['item_category_num']
             companyInfoItem['item_from'] = u'neeq'
             companyInfoItem['item_update_time'] = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 

@@ -70,6 +70,5 @@ class NeeqItemsDB(object):
         pass
 
     @staticmethod
-    def insert_item(item):
-        # print item
-        neeq_db.neeq_items.insert(item)
+    def get_neeq_items():
+        return neeq_db.neeq_items.find().batch_size(50)
