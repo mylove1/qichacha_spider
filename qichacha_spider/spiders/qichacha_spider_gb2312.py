@@ -19,8 +19,8 @@ class QichachaSpider(scrapy.Spider):
 
         txt = get_gb2312_txt()
         for i, element in enumerate(txt):
-            if i % 2 == 0:
-                search_key = txt[i:2]
+            for j, element in enumerate(txt):
+                search_key = txt[i] + txt[j]
                 # print "search_key: ", search_key
                 # search_key = u"乐游乐动"
                 print "search_key: ", search_key
@@ -41,7 +41,7 @@ class QichachaSpider(scrapy.Spider):
                 # # request.meta['item_category'] = item['category']
                 # # request.meta['item_category_num'] = item['category'][0:1]
                 yield request
-                break
+                # break
 
     def parse(self, response):
         print response.body
