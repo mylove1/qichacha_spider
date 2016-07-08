@@ -8,7 +8,7 @@
 		# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 		# |  |  |  |  |
 		# *  *  *  *  * user-name  command to be executed
-		  0  *  *  *  * root       sh /home/apps/proxy_spider/crontab/crawlall.sh
+		  0  *  *  *  * root       sh /home/apps/proxy_spider/crontab/crawl_all.sh
 		  10 *  *  *  * root       sh /home/apps/proxy_spider/crontab/crawl_proxy_api.sh
 		  20 *  *  *  * root       sh /home/apps/proxy_spider/crontab/dump_to_valid.sh
 		  30 *  *  *  * root       sh /home/apps/proxy_spider/crontab/valid_valid.sh
