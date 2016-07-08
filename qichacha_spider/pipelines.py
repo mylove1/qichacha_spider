@@ -6,7 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from scrapy.exceptions import DropItem
-from qichacha_spider.db.mongo import CompanyInfoItemsDB
+from qichacha_spider.db.mongo import CompanyInfoItemsDB, CompanyInfoItemsGb2312DB
 from utils import require_value_from_dict
 from items import CompanyInfoItem
 
@@ -19,7 +19,8 @@ class StripParamsPipeline(object):
                     'business_status', 'business_type', 'register_date', 'legal_representative',
                     'registered_capital', 'operating_period', 'registration_authority',
                     'date_of_issue', 'business_address', 'business_scope', 'unified_social_credit_code',
-                    'english_name', 'item_category', 'item_category_num', 'item_from']:
+                    'english_name', 'item_category', 'item_category_num', 'item_from', 'item_from_gb2312',
+                    'item_update_time']:
             i[key] = require_value_from_dict(item, key)
         return i
 
@@ -45,5 +46,6 @@ class DuplicatesPipeline(object):
 
 class MongoPipeline(object):
     def process_item(self, item, spider):
-        CompanyInfoItemsDB.upsert_company_info_item(dict(item))
+        # CompanyInfoItemsDB.upsert_company_info_item(dict(item))
+        CompanyInfoItemsGb2312DB.upsert_company_info_item(dict(item))
         return item

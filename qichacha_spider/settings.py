@@ -150,15 +150,16 @@ MONGO_URI = "localhost:27017"
 MONGO_PROXY_DB = "proxy"
 MONGO_JD_DB = "jd"
 MONGO_QICHACHA_DB = "qichacha"
+MONGO_QICHACHA_GB2312_DB = "qichacha_gb2312"
 MONGO_BJDA_DB = "bjda"
 MONGO_NEEQ_DB = "neeq"
 
 # LOG
-# LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
-# # CRITICAL、 ERROR、WARNING、INFO、DEBUG
-# LOG_LEVEL = 'DEBUG'
-# # 所有标准输出重定向到log
-# LOG_STDOUT = True
+LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
+# CRITICAL、 ERROR、WARNING、INFO、DEBUG
+LOG_LEVEL = 'DEBUG'
+# 所有标准输出重定向到log
+LOG_STDOUT = True
 
 # 重试次数
 RETRY_TIMES = 20

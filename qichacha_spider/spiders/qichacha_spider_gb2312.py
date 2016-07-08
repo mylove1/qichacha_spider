@@ -18,26 +18,24 @@ class QichachaSpider(scrapy.Spider):
     def start_requests(self):
 
         txt = get_gb2312_txt()
-        for i, element in enumerate(txt):
-            for j, element in enumerate(txt):
+        for i in range(len(txt)):
+            for j in range(len(txt)):
                 search_key = txt[i] + txt[j]
-                # print "search_key: ", search_key
-                # search_key = u"乐游乐动"
-                print "search_key: ", search_key
+                print "++++++gb2312+++++++:", i, j, len(txt), search_key
                 url = "http://www.qichacha.com/search?key=" + urllib.quote(search_key.encode('utf-8')) + "&index=0"
-                # url = "http://www.qichacha.com/search_index?key="+ urllib.quote(search_key.encode('utf-8')) + "&index=0&statusCode=&registCapiBegin=&registCapiEnd=&sortField=&isSortAsc=&province=&startDateBegin=&startDateEnd=&cityCode=&industryCode=&subIndustryCode=&ajaxflag=true&p=1"
                 print url
                 request = scrapy.Request(
                     url,
                     callback=self.parse
                 )
-                # # request.meta['item_category'] = item['category']
-                # # request.meta['item_category_num'] = item['category'][0:1]
+                # request.meta['item_category'] = item['category']
+                # request.meta['item_category_num'] = item['category'][0:1]
                 yield request
-                # break
+                break
+            break
 
     def parse(self, response):
-        print response.body
+        # print response.body
         search_list = response.xpath('//ul[@class="list-group list-group-lg no-bg auto"]/a')
         for sel in search_list:
             companyInfoItem = CompanyInfoItem()
