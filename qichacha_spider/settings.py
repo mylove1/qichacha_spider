@@ -104,7 +104,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     # 'qichacha_spider.middlewares.MyCustomDownloaderMiddleware': 543,
-    # 'qichacha_spider.middlewares.ProxyMiddleware': 760,
+    'qichacha_spider.middlewares.ProxyMiddleware': 760,
     # 'qichacha_spider.middlewares.RandomUserAgentMiddleware': 410,
 }
 
