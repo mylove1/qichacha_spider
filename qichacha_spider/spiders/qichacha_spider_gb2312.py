@@ -21,7 +21,7 @@ class QichachaSpider(scrapy.Spider):
         for i in range(len(txt)):
             for j in range(len(txt)):
                 search_key = txt[i] + txt[j]
-                search_key = u'一三'
+                # search_key = u'一三'
                 print "++++++gb2312+++++++:", time.strftime('%Y-%m-%d', time.localtime(time.time())), i, j, len(
                     txt), search_key
                 url = "http://www.qichacha.com/search?key=" + urllib.quote(search_key.encode('utf-8')) + "&index=0"
