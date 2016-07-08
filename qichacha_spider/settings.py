@@ -119,7 +119,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     'qichacha_spider.pipelines.StripParamsPipeline': 99,
     'qichacha_spider.pipelines.ValidParamsPipeline': 100,
-    'qichacha_spider.pipelines.DuplicatesPipeline': 200,
+    # 'qichacha_spider.pipelines.DuplicatesPipeline': 200,
     # 'qichacha_spider.pipelines.CheckProxyPipeline': 300,
     'qichacha_spider.pipelines.MongoPipeline': 400,
 }
@@ -155,11 +155,11 @@ MONGO_BJDA_DB = "bjda"
 MONGO_NEEQ_DB = "neeq"
 
 # LOG
-# LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
-# # CRITICAL、 ERROR、WARNING、INFO、DEBUG
-# LOG_LEVEL = 'DEBUG'
-# # 所有标准输出重定向到log
-# LOG_STDOUT = True
+LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
+# CRITICAL、 ERROR、WARNING、INFO、DEBUG
+LOG_LEVEL = 'DEBUG'
+# 所有标准输出重定向到log
+LOG_STDOUT = True
 
 # 重试次数
 RETRY_TIMES = 20

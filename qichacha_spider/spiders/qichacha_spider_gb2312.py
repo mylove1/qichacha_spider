@@ -37,7 +37,7 @@ class QichachaSpider(scrapy.Spider):
             break
 
     def parse(self, response):
-        print response.body
+        # print response.body
         search_list = response.xpath('//tbody/tr')
         for sel in search_list:
             companyInfoItem = CompanyInfoItem()
@@ -115,5 +115,5 @@ class QichachaSpider(scrapy.Spider):
                 companyInfoItem['business_scope'] = li_sel.xpath('./text()')[1].extract()
             else:
                 print "unknown li label: ", label.encode('utf8')
-        print companyInfoItem
+        # print companyInfoItem
         yield companyInfoItem

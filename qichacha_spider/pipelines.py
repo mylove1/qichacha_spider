@@ -32,16 +32,16 @@ class ValidParamsPipeline(object):
         raise DropItem("company_name is null")
 
 
-class DuplicatesPipeline(object):
-    def __init__(self):
-        self.ips_seen = set()
-
-    def process_item(self, item, spider):
-        if item['company_name'] in self.ips_seen and not item.get('phone'):
-            raise DropItem("Duplicate item found: %s" % item['company_name'])
-        else:
-            self.ips_seen.add(item['company_name'])
-            return item
+# class DuplicatesPipeline(object):
+#     def __init__(self):
+#         self.ips_seen = set()
+#
+#     def process_item(self, item, spider):
+#         if item['company_name'] in self.ips_seen and not item.get('phone'):
+#             raise DropItem("Duplicate item found: %s" % item['company_name'])
+#         else:
+#             self.ips_seen.add(item['company_name'])
+#             return item
 
 
 class MongoPipeline(object):
