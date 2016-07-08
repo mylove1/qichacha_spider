@@ -33,8 +33,8 @@ class QichachaSpider(scrapy.Spider):
                 # request.meta['item_category'] = item['category']
                 # request.meta['item_category_num'] = item['category'][0:1]
                 yield request
-                break
-            break
+                # break
+                # break
 
     def parse(self, response):
         # print response.body
