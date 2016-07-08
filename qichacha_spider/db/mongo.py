@@ -50,9 +50,10 @@ class CompanyInfoItemsGb2312DB(object):
 
     @staticmethod
     def upsert_company_info_item(item):
-        qichacha_gb2312_db.company_info_items.update(
-            {'company_name': item['company_name']},
-            {'$set': item}, True, True)
+        print item
+        # qichacha_gb2312_db.company_info_items.update(
+        #     {'company_name': item['company_name']},
+        #     {'$set': item}, True, True)
 
 
 class BjdaItemsDB(object):

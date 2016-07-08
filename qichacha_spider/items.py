@@ -12,6 +12,8 @@ class CompanyInfoItem(scrapy.Item):
     item_category = scrapy.Field()  # 分类
     item_category_num = scrapy.Field()  # 分类编号
     item_from = scrapy.Field()  # 来源 jd, bjda..
+    item_from_gb2312 = scrapy.Field()
+    item_update_time = scrapy.Field()
 
     province = scrapy.Field()  # 省份
     phone = scrapy.Field()  # 电话

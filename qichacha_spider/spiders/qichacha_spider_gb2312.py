@@ -21,6 +21,7 @@ class QichachaSpider(scrapy.Spider):
         for i in range(len(txt)):
             for j in range(len(txt)):
                 search_key = txt[i] + txt[j]
+                search_key = u'一三'
                 print "++++++gb2312+++++++:", time.strftime('%Y-%m-%d', time.localtime(time.time())), i, j, len(
                     txt), search_key
                 url = "http://www.qichacha.com/search?key=" + urllib.quote(search_key.encode('utf-8')) + "&index=0"
@@ -36,8 +37,8 @@ class QichachaSpider(scrapy.Spider):
             break
 
     def parse(self, response):
-        # print response.body
-        search_list = response.xpath('//ul[@class="list-group list-group-lg no-bg auto"]/a')
+        print response.body
+        search_list = response.xpath('//tbody/tr')
         for sel in search_list:
             companyInfoItem = CompanyInfoItem()
 
@@ -46,12 +47,12 @@ class QichachaSpider(scrapy.Spider):
             companyInfoItem['item_from_gb2312'] = u'gb2312'
             companyInfoItem['item_update_time'] = time.strftime('%Y-%m-%d', time.localtime(time.time()))
 
-            companyInfoItem['province'] = sel.xpath(
-                './span[@class="clear"]/span[@class="btn btn-link pull-right"]/text()').extract_first()
-            companyInfoItem['phone'] = sel.xpath('./span[@class="clear"]/small[2]/span[1]/text()').extract_first()
-            companyInfoItem['email'] = sel.xpath('./span[@class="clear"]/small[2]/span[2]/text()').extract_first()
+            # companyInfoItem['province'] = sel.xpath(
+            #     './span[@class="clear"]/span[@class="btn btn-link pull-right"]/text()').extract_first()
+            # companyInfoItem['phone'] = sel.xpath('./span[@class="clear"]/small[2]/span[1]/text()').extract_first()
+            # companyInfoItem['email'] = sel.xpath('./span[@class="clear"]/small[2]/span[2]/text()').extract_first()
 
-            url = sel.xpath('./@href').extract_first()
+            url = sel.xpath('./td[@class="tp1"]/a/@href').extract_first()
             url = response.urljoin(url)
             print "url: ", url
 
@@ -68,6 +69,17 @@ class QichachaSpider(scrapy.Spider):
         companyInfoItem = response.meta['item']
 
         companyInfoItem['company_name'] = response.xpath('//span[@class="text-big font-bold"]/text()').extract_first()
+
+        small_sel = response.xpath(
+            '//div[@id="company-top"]/div[@class="row"]/div[@class="col-md-9 m-b m-t"]/span[@class="clear"]/small[@class="clear text-ellipsis m-t-xs text-md text-black"]')
+        try:
+            companyInfoItem['phone'] = response.xpath('./text()')[1].extract().strip()
+        except:
+            pass
+        try:
+            companyInfoItem['email'] = response.xpath('./a/text()').extract_first()
+        except:
+            pass
 
         li_list = response.xpath('//ul[@class="company-base"]/li')
         for li_sel in li_list:
@@ -103,5 +115,5 @@ class QichachaSpider(scrapy.Spider):
                 companyInfoItem['business_scope'] = li_sel.xpath('./text()')[1].extract()
             else:
                 print "unknown li label: ", label.encode('utf8')
-        # print companyInfoItem
+        print companyInfoItem
         yield companyInfoItem

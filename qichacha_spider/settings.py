@@ -71,7 +71,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -155,11 +155,11 @@ MONGO_BJDA_DB = "bjda"
 MONGO_NEEQ_DB = "neeq"
 
 # LOG
-LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
-# CRITICAL、 ERROR、WARNING、INFO、DEBUG
-LOG_LEVEL = 'DEBUG'
-# 所有标准输出重定向到log
-LOG_STDOUT = True
+# LOG_FILE = 'log/%s.log' % datetime.datetime.now().strftime('%Y-%m-%d')
+# # CRITICAL、 ERROR、WARNING、INFO、DEBUG
+# LOG_LEVEL = 'DEBUG'
+# # 所有标准输出重定向到log
+# LOG_STDOUT = True
 
 # 重试次数
 RETRY_TIMES = 20
