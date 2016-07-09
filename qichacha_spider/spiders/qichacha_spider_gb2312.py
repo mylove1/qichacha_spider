@@ -65,7 +65,7 @@ class QichachaSpider(scrapy.Spider):
             # break  # 只要第一个,有分类的
 
     def parse_company(self, response):
-        print "parse_company", response.body
+        # print "parse_company", response.body
         companyInfoItem = response.meta['item']
 
         companyInfoItem['company_name'] = response.xpath('//span[@class="text-big font-bold"]/text()').extract_first()
@@ -115,5 +115,5 @@ class QichachaSpider(scrapy.Spider):
                 companyInfoItem['business_scope'] = li_sel.xpath('./text()')[1].extract()
             else:
                 print "unknown li label: ", label.encode('utf8')
-        print companyInfoItem
+        # print companyInfoItem
         yield companyInfoItem
